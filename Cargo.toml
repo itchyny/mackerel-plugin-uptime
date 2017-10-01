@@ -11,6 +11,7 @@ keywords = ["cli", "mackerel"]
 [dependencies]
 mackerel_plugin = "0.1"
 libc = "0.2"
+time = "0.1"
 
 [[bin]]
 name = "mackerel-plugin-uptime"
