@@ -48,7 +48,7 @@ impl Plugin for UptimePlugin {
     fn fetch_metrics(&self) -> Result<HashMap<String, f64>, String> {
         let mut metrics = HashMap::new();
         let uptime = get_uptime()?;
-        metrics.insert("uptime.uptime_sec".to_string(), uptime);
+        metrics.insert("uptime.uptime".to_string(), uptime);
         Ok(metrics)
     }
 
@@ -59,7 +59,7 @@ impl Plugin for UptimePlugin {
                 label: "Uptime",
                 unit: "integer",
                 metrics: [
-                    { name: "uptime_sec", label: "uptime (sec)" },
+                    { name: "uptime", label: "uptime (sec)" },
                 ]
             },
         ]

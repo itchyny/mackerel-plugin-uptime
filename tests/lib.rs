@@ -12,7 +12,7 @@ fn plugin_output_values() {
     let mut out = Cursor::new(Vec::new());
     assert_eq!(plugin.output_values(&mut out).is_ok(), true);
     let out_str = String::from_utf8(out.into_inner()).unwrap();
-    assert_eq!(out_str.contains("uptime.uptime_sec\t"), true);
+    assert_eq!(out_str.contains("uptime.uptime\t"), true);
 }
 
 #[test]

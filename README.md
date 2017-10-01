@@ -3,7 +3,7 @@
 
 ```
  $ mackerel-plugin-uptime
-uptime.uptime_sec	84380	1506835431
+uptime.uptime	84380	1506835431
  $ cat /proc/uptime
 84379.58 69287.34
  $ uptime
