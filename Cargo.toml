@@ -9,7 +9,7 @@ license = "MIT"
 keywords = ["cli", "mackerel"]
 
 [dependencies]
-mackerel_plugin = "0.1"
+mackerel_plugin = "0.2"
 libc = "0.2"
 time = "0.1"
 
