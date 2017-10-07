@@ -12,13 +12,11 @@ pub struct UptimePlugin {}
 #[cfg(target_os = "linux")]
 fn get_uptime() -> Result<f64, String> {
     let mut info: libc::sysinfo = unsafe { mem::zeroed() };
-    unsafe {
-        let ret = libc::sysinfo(&mut info);
-        if ret == 0 {
-            Ok(info.uptime as f64)
-        } else {
-            Err("sysinfo failed".to_string())
-        }
+    let ret = unsafe { libc::sysinfo(&mut info) };
+    if ret == 0 {
+        Ok(info.uptime as f64)
+    } else {
+        Err("sysinfo failed".to_string())
     }
 }
 
