@@ -13,6 +13,9 @@ mackerel_plugin = "0.2"
 libc = "0.2"
 time = "0.1"
 
+[target.'cfg(windows)'.dependencies]
+kernel32-sys = "0.2"
+
 [[bin]]
 name = "mackerel-plugin-uptime"
 path = "bin/main.rs"

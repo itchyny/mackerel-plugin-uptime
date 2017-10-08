@@ -2,8 +2,11 @@ extern crate libc;
 #[macro_use]
 extern crate mackerel_plugin;
 extern crate time;
+#[cfg(windows)]
+extern crate kernel32;
 
 use std::collections::HashMap;
+#[cfg(not(windows))]
 use std::mem;
 use mackerel_plugin::*;
 
@@ -40,6 +43,12 @@ fn get_uptime() -> Result<f64, String> {
             Err("sysctl failed".to_string())
         }
     }
+}
+
+#[cfg(target_os = "windows")]
+fn get_uptime() -> Result<f64, String> {
+    let ret: u64 = unsafe { kernel32::GetTickCount64() };
+    Ok((ret / 1000) as f64)
 }
 
 impl Plugin for UptimePlugin {
