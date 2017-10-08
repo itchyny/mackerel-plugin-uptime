@@ -14,3 +14,8 @@ matrix:
 os:
   - linux
   - osx
+
+script:
+  - cargo build --verbose
+  - cargo run
+  - cargo test
