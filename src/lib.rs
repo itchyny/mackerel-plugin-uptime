@@ -1,4 +1,3 @@
-#[macro_use]
 extern crate mackerel_plugin;
 extern crate uptime_lib;
 
@@ -11,7 +10,7 @@ impl Plugin for UptimePlugin {
     fn fetch_metrics(&self) -> Result<HashMap<String, f64>, String> {
         let mut metrics = HashMap::new();
         let uptime = uptime_lib::get()?;
-        metrics.insert("uptime.uptime".to_string(), uptime.num_milliseconds() as f64 / 1000.0);
+        metrics.insert("uptime.uptime".to_string(), uptime.as_secs_f64());
         Ok(metrics)
     }
 

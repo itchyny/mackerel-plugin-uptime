@@ -9,8 +9,8 @@ license = "MIT"
 keywords = ["cli", "mackerel"]
 
 [dependencies]
-mackerel_plugin = "0.2"
-uptime_lib = "0.0"
+mackerel_plugin = "0.2.4"
+uptime_lib = "0.2.1"
 
 [[bin]]
 name = "mackerel-plugin-uptime"
