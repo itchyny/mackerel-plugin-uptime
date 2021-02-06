@@ -1,8 +1,8 @@
 extern crate mackerel_plugin;
 extern crate uptime_lib;
 
-use std::collections::HashMap;
 use mackerel_plugin::*;
+use std::collections::HashMap;
 
 pub struct UptimePlugin {}
 
@@ -15,15 +15,13 @@ impl Plugin for UptimePlugin {
     }
 
     fn graph_definition(&self) -> Vec<Graph> {
-        vec![
-            graph! {
-                name: "uptime",
-                label: "Uptime",
-                unit: "integer",
-                metrics: [
-                    { name: "uptime", label: "uptime (sec)" },
-                ]
-            },
-        ]
+        vec![graph! {
+            name: "uptime",
+            label: "Uptime",
+            unit: "integer",
+            metrics: [
+                { name: "uptime", label: "uptime (sec)" },
+            ]
+        }]
     }
 }
