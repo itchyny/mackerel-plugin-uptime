@@ -30,20 +30,16 @@ jobs:
       run: cargo test
     - name: Run
       run: cargo run
-    - name: Set the executable name
-      id: executable
-      run: echo "::set-output name=name::$(basename $PWD)"
     - name: Set the asset name
       id: asset
-      run: echo "::set-output name=name::${{ steps.executable.outputs.name }}_${GITHUB_REF#refs/tags/}_${{ matrix.target }}_amd64"
+      run: echo "::set-output name=name::$(basename $PWD)_${GITHUB_REF#refs/tags/}_${{ matrix.target }}_amd64"
     - name: Build artifact
       run: |
         export PATH=$PATH:~/.cache/cargo/bin
-        execname=${{ steps.executable.outputs.name }}
         name=${{ steps.asset.outputs.name }}
         mkdir $name
         cp README.md LICENSE $name
-        mv $(which $execname) $name
+        mv "$(which $(basename $PWD))" $name
         zip -r $name.zip $name
       env:
         TARGET: ${{ matrix.target }}
@@ -68,8 +64,7 @@ jobs:
         draft: false
         prerelease: false
     - name: Save release upload url
-      run: |
-        echo '${{ steps.create-release.outputs.upload_url }}' > release_upload_url.txt
+      run: echo '${{ steps.create-release.outputs.upload_url }}' > release_upload_url.txt
     - name: Upload release upload url
       uses: actions/upload-artifact@v2
       with:
@@ -96,12 +91,9 @@ jobs:
       uses: actions/download-artifact@v2
       with:
         name: ${{ matrix.target }}
-    - name: Set the executable name
-      id: executable
-      run: echo "::set-output name=name::$(basename $PWD)"
     - name: Set the asset name
       id: asset
-      run: echo "::set-output name=name::${{ steps.executable.outputs.name }}_${GITHUB_REF#refs/tags/}_${{ matrix.target }}_amd64"
+      run: echo "::set-output name=name::$(basename $PWD)_${GITHUB_REF#refs/tags/}_${{ matrix.target }}_amd64"
     - name: Upload release artifact
       uses: actions/upload-release-asset@v1
       env:
