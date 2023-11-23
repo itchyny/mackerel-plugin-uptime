@@ -1,6 +1,6 @@
 [package]
 name = "mackerel_plugin_uptime"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["itchyny <itchyny@cybozu.co.jp>"]
 description = "Uptime plugin for Mackerel"
 repository = "https://github.com/itchyny/mackerel-plugin-uptime"
