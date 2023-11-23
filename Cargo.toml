@@ -9,6 +9,11 @@ license = "MIT"
 keywords = ["cli", "mackerel"]
 edition = "2021"
 
+[profile.release]
+lto = true
+strip = true
+codegen-units = 1
+
 [dependencies]
 mackerel_plugin = "0.2.6"
 uptime_lib = "0.3.0"
